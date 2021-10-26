@@ -1,39 +1,29 @@
 import time
-import random
-###
-### Lista com tamanho grande (um milhão aproximadamente) travam o programada, não da erro, mas demora muito para dar resposta.
-### Possivelmente está num loop infinito sem condição de parada.
-###
 
-def aleatorio(seed):
-    numero=seed
-    quadrado=numero*numero
-    taux=len(str(quadrado))
-    while taux<ndig*2:
-        quadrado='0'+str(quadrado)
-        taux=len(str(quadrado))
-    numero=int(str(quadrado)[int(ndig/2):int(ndig/2+ndig)])
-    i=1
-    #caso pegue 0 a esquerda, o número de dígito será menor, então pego um número a mais na direita
-    while len(str(numero))<ndig:
-        numero=int(str(quadrado)[int(ndig/2):int(ndig/2+ndig+i)])
-        i=i+1
-    return numero
+def semente(numero, imprimirAte):
+    print("Semente inserida: ", numero)
+    print("Número de pseudos: ", imprimirAte)
+    aleatorio(numero, imprimirAte)
 
-def semente():
-    pseudo = random.randint(1, 1000000)
-    aleatorio(pseudo)
+def aleatorio(numero, imprimirAte):
+    repetido = set()
+    cont = 0
+    i = 0
+    lista=[]
 
-#seed=int(input("digite a semente: "))
-#seed=semente()
-qtd=int(input("digite quantos números quer gerar: "))
-ndig=len(str(semente)) 
+    while numero not in repetido:
+        cont += 1
+        repetido.add(numero)
+        numero = int(str(numero * numero).zfill(8)[2:6])
+        lista.append(numero)
+        
+        if(i < imprimirAte):
+            print("Valor # ",cont, ": ",lista[i])
+            i += 1
+            
+           
+    print(lista[0])
 
-semente()
-lista=[]
-i=0
-while i<qtd:
-    pseudo=(aleatorio(semente))
-    lista.append(semente)
-    i=i+1
-print(lista)
+numero = int(input("Coloque a semente: "))
+imprimirAte = int(input("Coloque quantos números pseudoaleatórios você deseja ver: "))
+semente(numero, imprimirAte)
