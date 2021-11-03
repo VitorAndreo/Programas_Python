@@ -22,7 +22,6 @@ def aleatorio(numero, imprimirAte):
             i += 1
             
            
-    print(lista[0])
 
 numero = int(input("Coloque a semente: "))
 imprimirAte = int(input("Coloque quantos números pseudoaleatórios você deseja ver: "))
