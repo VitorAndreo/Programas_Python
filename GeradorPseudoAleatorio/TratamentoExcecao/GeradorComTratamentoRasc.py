@@ -20,7 +20,7 @@ def aleatorio(numero, imprimirAte):
 
     for i in range(imprimirAte):
         print("Valor #", i+1, ": ", lista[i])
-        if(lista[i] == lista[i-1]):
+        if(lista[i] == lista[i+1]):
             novaSemente = random.random()
             print("\nValor repetido! Nova semente = ", novaSemente,"\n")
             return aleatorio(novaSemente, imprimirAte)
