@@ -1,7 +1,8 @@
 import random
 
 def semente(numero, imprimirAte):
-    print("Semente inserida: ", numero)
+    print("\n----------")
+    print("\nSemente inserida: ", numero)
     print("Número de pseudos: ", imprimirAte)
     aleatorio(numero, imprimirAte)
 
