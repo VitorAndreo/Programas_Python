@@ -10,6 +10,7 @@ def aleatorio(numero, imprimirAte):
     repetido = set()
     cont = 0
     i = 0
+    j = 0
     lista=[]
 
     while numero not in repetido:
@@ -19,11 +20,20 @@ def aleatorio(numero, imprimirAte):
         lista.append(numero)
 
     for i in range(imprimirAte):
-        print("Valor #", i+1, ": ", lista[i])
-        if(lista[i] == lista[i+1]):
-            novaSemente = random.random()
-            print("\nValor repetido! Nova semente = ", novaSemente,"\n")
-            return aleatorio(novaSemente, imprimirAte)
+        j += 1
+        total = len(lista)
+        aindaTemProximo = (i+1 < total)
+        print("Valor #", j, ": ", lista[i])
+
+        if aindaTemProximo:
+            if(lista[i] == lista[i+1]):
+                novaSemente = random.random()
+                print("\nValor repetido! Nova semente = ", novaSemente,"\n")
+                return aleatorio(novaSemente, imprimirAte)
+        else:
+            print("A Lista atingiu o limite em que chega com esta semente sem nenhuma repetição")
+            break
+                
                 
 
 
