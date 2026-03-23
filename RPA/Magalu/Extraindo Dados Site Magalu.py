@@ -1,0 +1,41 @@
+from selenium import webdriver as wd
+from selenium.webdriver.common.by import By
+import pyautogui as op
+import pyautogui as t
+
+navegador = wd.Chrome()
+
+#Preparando o site
+navegador.get('https://www.magazineluiza.com.br/')
+
+#Procura pelo campo ID e digita o nome do produto
+navegador.find_element(By.ID, 'header-search-input').send_keys("geladeira")
+t.sleep(2)
+
+#Apertando enter para pesquisar o produtor
+op.press('tab')
+op.press('tab')
+op.press('enter')
+
+#Tempo para carregar a lista de produtos do site
+t.sleep(10)
+
+listaProdutos = navegador.find_elements(By.CLASS_NAME, 'fHAfdj')
+
+for produto in listaProdutos:
+    nomeProduto = ""
+    precoProduto = ""
+    urlProduto = ""
+
+    if nomeProduto == "":
+        try:
+            nomeProduto = produto.find_element(By.CLASS_NAME,'bohfAy').text
+        except Exception:
+            pass
+    elif nomeProduto == "":
+        try:
+            nomeProduto = produto.find_element(By.CLASS_NAME, 'sc-ksCcjW').text
+        except Exception:
+            pass
+
+    print(nomeProduto)
